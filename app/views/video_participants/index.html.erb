@@ -1,0 +1,27 @@
+<h1>Listing video_participants</h1>
+
+<table>
+  <tr>
+    <th>Bboy</th>
+    <th>Video</th>
+    <th>Crew</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @video_participants.each do |video_participant| %>
+  <tr>
+    <td><%= video_participant.bboy_id %></td>
+    <td><%= video_participant.video_id %></td>
+    <td><%= video_participant.crew_id %></td>
+    <td><%= link_to 'Show', video_participant %></td>
+    <td><%= link_to 'Edit', edit_video_participant_path(video_participant) %></td>
+    <td><%= link_to 'Destroy', video_participant, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Video participant', new_video_participant_path %>

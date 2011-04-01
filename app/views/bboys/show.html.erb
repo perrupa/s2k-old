@@ -1,15 +1,33 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @bboy.bboyName %></h1>
+
+	<span class="affiliation">
+		<% if(@bboy.crews.count > 0)%>
+			<span><%= if(@bboy.crews.size > 1) then "Crew".pluralize else "Crew" end %>:</span>
+			<%= @bboy.crews.collect{|c| link_to c.name, c}.to_sentence.html_safe %>
+		<% else %>	
+			<em>Independent</em>
+		<% end %>
+	</span>
+
+<% if @bboy.name != nil %>
 <p>
-  <b>Name:</b>
+  <b>Full Name:</b>
   <%= @bboy.name %>
 </p>
+<% end %>
 
-<p>
-  <b>Bboyname:</b>
-  <%= @bboy.bboyName %>
-</p>
-
+<h3>Videos</h3>
+<% if @bboy.videos.count > 0%>
+<ul>
+	<% @bboy.videos.each do |video| %>
+	<li><%= link_to video.title, video%></li>
+	<% end %>
+</ul>
+<% else %>
+<em>None</em>
+<% end %>
 
 <%= link_to 'Edit', edit_bboy_path(@bboy) %> |
 <%= link_to 'Back', bboys_path %>

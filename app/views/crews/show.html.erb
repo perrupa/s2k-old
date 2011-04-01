@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
+<h1><%= @crew.name %></h1>
 
-<p>
-  <b>Name:</b>
-  <%= @crew.name %>
-</p>
-
+<% @crew.videos.each do |video| %>
+	<%= link_to video.title, video %>
+<% end %>
 
 <%= link_to 'Edit', edit_crew_path(@crew) %> |
 <%= link_to 'Back', crews_path %>

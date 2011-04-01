@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  bboy_id: 1
+  video_id: 1
+  crew_id: 1
+
+two:
+  bboy_id: 1
+  video_id: 1
+  crew_id: 1

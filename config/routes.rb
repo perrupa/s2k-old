@@ -1,9 +1,8 @@
 S2k::Application.routes.draw do
-  resources :crews
-
-  resources :bboys
-
   resources :videos
+  resources :crews
+  resources :bboys
+  resources :video_participants
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

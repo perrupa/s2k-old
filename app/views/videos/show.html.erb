@@ -18,5 +18,17 @@
   <p>YoutubeID = <%= @video.youtubeID %></p>
 </div>
 
+<h3>Crews</h3>
+<ul class="crewList">
+	<% @video.crews.each do |crew| %>
+	<li><%= link_to crew.name, crew_path %>
+		<ul class="bboyList">
+		<% @video.video_participants.find_all{ |vp| vp.crew == crew && vp.bboy != nil}.each do |vp| %>
+			<li><%= link_to vp.bboy.bboyName, bboy_path(vp.bboy)%></li>
+		<% end %>
+		</ul>
+</li>
+	<% end %>
+</ul>
 <%= link_to 'Edit', edit_video_path(@video) %>
 <%= link_to 'Back', videos_path %>
