@@ -3,5 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
-
 S2k::Application.load_tasks
