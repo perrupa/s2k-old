@@ -1,0 +1,100 @@
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m ActionView::Template::Error (PGError: ERROR:  column "crews.id" must appear in the GROUP BY clause or be used in an aggregate function
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m : SELECT "crews".* FROM "crews" INNER JOIN "video_participants" ON "crews".id = "video_participants".crew_id WHERE (("video_participants".video_id = 1)) GROUP BY crew_id):
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m     20: 
+[33m2011-04-05T16:34:32+00:00 heroku[router]:[0m GET s2k.heroku.com/videos/1 dyno=web.1 queue=0 wait=0ms service=54ms bytes=934
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m     21: <h3>Crews</h3>
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m     22: <ul class="crewList">
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m     23: 	<% @video.crews.group(:crew_id).each do |crew| %>
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m     24: 	<li><%= link_to crew.name, crew_path %>
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m     25: 		<ul class="bboyList">
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m     26: 		<% @video.video_participants.find_all{ |vp| vp.crew == crew && vp.bboy != nil}.each do |vp| %>
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m   app/views/videos/show.html.erb:23:in `_app_views_videos_show_html_erb__1779848853_23928398042320_0'
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m   app/controllers/videos_controller.rb:19:in `show'
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:34:32-07:00 app[web.1]:[0m 
+[32m2011-04-05T09:34:33-07:00 heroku[nginx]:[0m GET /videos/1 HTTP/1.1 | 174.116.170.55 | 964 | http | 500
+[33m2011-04-05T16:34:33+00:00 heroku[router]:[0m GET s2k.heroku.com/favicon.ico dyno=web.1 queue=0 wait=0ms service=2ms bytes=225
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m Started GET "/videos/1" for 174.116.170.55 at Tue Apr 05 09:43:18 -0700 2011
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m   Processing by VideosController#show as HTML
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m   Parameters: {"id"=>"1"}
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m Rendered videos/show.html.erb within layouts/application (2.4ms)
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m Completed   in 5ms
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m ActionView::Template::Error (PGError: ERROR:  column "crews.id" must appear in the GROUP BY clause or be used in an aggregate function
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m : SELECT "crews".* FROM "crews" INNER JOIN "video_participants" ON "crews".id = "video_participants".crew_id WHERE (("video_participants".video_id = 1)) GROUP BY crew_id):
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m     20: 
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m     21: <h3>Crews</h3>
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m     22: <ul class="crewList">
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m     23: 	<% @video.crews.group(:crew_id).each do |crew| %>
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m     24: 	<li><%= link_to crew.name, crew_path %>
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m     25: 		<ul class="bboyList">
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m     26: 		<% @video.video_participants.find_all{ |vp| vp.crew == crew && vp.bboy != nil}.each do |vp| %>
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m   app/views/videos/show.html.erb:23:in `_app_views_videos_show_html_erb__1779848853_23928398042320_0'
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m   app/controllers/videos_controller.rb:19:in `show'
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:43:18-07:00 app[web.1]:[0m 
+[33m2011-04-05T16:43:18+00:00 heroku[router]:[0m GET s2k.heroku.com/videos/1 dyno=web.1 queue=0 wait=0ms service=13ms bytes=934
+[32m2011-04-05T09:43:18-07:00 heroku[nginx]:[0m GET /videos/1 HTTP/1.1 | 174.116.170.55 | 964 | http | 500
+[33m2011-04-05T16:43:18+00:00 heroku[router]:[0m GET s2k.heroku.com/favicon.ico dyno=web.1 queue=0 wait=0ms service=2ms bytes=225
+[32m2011-04-05T09:43:18-07:00 heroku[nginx]:[0m GET /favicon.ico HTTP/1.1 | 174.116.170.55 | 198 | http | 304
+[35m2011-04-05T09:43:36-07:00 heroku[rake.3]:[0m State changed from created to starting
+[35m2011-04-05T09:43:42-07:00 heroku[rake.3]:[0m State changed from starting to up
+[35m2011-04-05T09:43:43-07:00 heroku[rake.3]:[0m State changed from up to complete
+[31m2011-04-05T09:43:57-07:00 heroku[api]:[0m Restarting processes
+[36m2011-04-05T09:43:57-07:00 heroku[web.1]:[0m State changed from up to bouncing
+[36m2011-04-05T09:43:57-07:00 heroku[web.1]:[0m State changed from created to starting
+[36m2011-04-05T09:43:59-07:00 app[web.1]:[0m >> Stopping ...
+[36m2011-04-05T09:44:02-07:00 app[web.1]:[0m >> Thin web server (v1.2.6 codename Crazy Delicious)
+[36m2011-04-05T09:44:02-07:00 app[web.1]:[0m >> Maximum connections set to 1024
+[36m2011-04-05T09:44:02-07:00 app[web.1]:[0m >> Listening on 0.0.0.0:47402, CTRL+C to stop
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m Started GET "/videos/1" for 174.116.170.55 at Tue Apr 05 09:44:03 -0700 2011
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m   Processing by VideosController#show as HTML
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m   Parameters: {"id"=>"1"}
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m Rendered videos/show.html.erb within layouts/application (18.1ms)
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m Completed   in 43ms
+[33m2011-04-05T16:44:03+00:00 heroku[router]:[0m GET s2k.heroku.com/videos/1 dyno=web.1 queue=0 wait=3312ms service=55ms bytes=934
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m ActionView::Template::Error (PGError: ERROR:  column "crews.id" must appear in the GROUP BY clause or be used in an aggregate function
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m : SELECT "crews".* FROM "crews" INNER JOIN "video_participants" ON "crews".id = "video_participants".crew_id WHERE (("video_participants".video_id = 1)) GROUP BY crew_id):
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m     20: 
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m     21: <h3>Crews</h3>
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m     22: <ul class="crewList">
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m     23: 	<% @video.crews.group(:crew_id).each do |crew| %>
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m     24: 	<li><%= link_to crew.name, crew_path %>
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m     25: 		<ul class="bboyList">
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m     26: 		<% @video.video_participants.find_all{ |vp| vp.crew == crew && vp.bboy != nil}.each do |vp| %>
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m   app/views/videos/show.html.erb:23:in `_app_views_videos_show_html_erb__1779848853_23458597567360_0'
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m   app/controllers/videos_controller.rb:19:in `show'
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:44:03-07:00 app[web.1]:[0m 
+[32m2011-04-05T09:44:03-07:00 heroku[nginx]:[0m GET /videos/1 HTTP/1.1 | 174.116.170.55 | 964 | http | 500
+[36m2011-04-05T09:44:03-07:00 heroku[web.1]:[0m State changed from starting to up
+[33m2011-04-05T16:44:06+00:00 heroku[router]:[0m GET s2k.heroku.com/videos/ dyno=web.1 queue=0 wait=0ms service=21ms bytes=2034
+[33m2011-04-05T16:44:07+00:00 heroku[router]:[0m GET s2k.heroku.com/stylesheets/scaffold.css dyno=web.1 queue=0 wait=0ms service=1ms bytes=1165
+[32m2011-04-05T09:44:07-07:00 heroku[nginx]:[0m GET /videos/ HTTP/1.1 | 174.116.170.55 | 1270 | http | 200
+[36m2011-04-05T09:44:07-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:44:07-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:44:07-07:00 app[web.1]:[0m ActionController::RoutingError (No route matches "/stylesheets/all.css"):
+[36m2011-04-05T09:44:07-07:00 app[web.1]:[0m   
+[36m2011-04-05T09:44:07-07:00 app[web.1]:[0m 
+[36m2011-04-05T09:44:07-07:00 app[web.1]:[0m 
+[33m2011-04-05T16:44:07+00:00 heroku[router]:[0m GET s2k.heroku.com/stylesheets/all.css dyno=web.1 queue=0 wait=0ms service=6ms bytes=922
+[33m2011-04-05T16:44:07+00:00 heroku[router]:[0m GET s2k.heroku.com/javascripts/prototype.js dyno=web.1 queue=0 wait=0ms service=7ms bytes=162619
+[33m2011-04-05T16:44:07+00:00 heroku[router]:[0m GET s2k.heroku.com/javascripts/effects.js dyno=web.1 queue=0 wait=0ms service=4ms bytes=38732
+[33m2011-04-05T16:44:07+00:00 heroku[router]:[0m GET s2k.heroku.com/javascripts/dragdrop.js dyno=web.1 queue=0 wait=0ms service=8ms bytes=31321
+[33m2011-04-05T16:44:07+00:00 heroku[router]:[0m GET s2k.heroku.com/javascripts/controls.js dyno=web.1 queue=0 wait=0ms service=9ms bytes=35052
+[32m2011-04-05T09:44:07-07:00 heroku[nginx]:[0m GET /stylesheets/scaffold.css?1302020753 HTTP/1.1 | 174.116.170.55 | 1195 | http | 200
+[33m2011-04-05T16:44:07+00:00 heroku[router]:[0m GET s2k.heroku.com/javascripts/rails.js dyno=web.1 queue=0 wait=0ms service=6ms bytes=6542
+[32m2011-04-05T09:44:07-07:00 heroku[nginx]:[0m GET /stylesheets/all.css HTTP/1.1 | 174.116.170.55 | 953 | http | 404
+[32m2011-04-05T09:44:07-07:00 heroku[nginx]:[0m GET /javascripts/prototype.js?1302020753 HTTP/1.1 | 174.116.170.55 | 39092 | http | 200
+[32m2011-04-05T09:44:07-07:00 heroku[nginx]:[0m GET /javascripts/effects.js?1302020753 HTTP/1.1 | 174.116.170.55 | 9409 | http | 200
+[32m2011-04-05T09:44:07-07:00 heroku[nginx]:[0m GET /javascripts/dragdrop.js?1302020753 HTTP/1.1 | 174.116.170.55 | 8255 | http | 200
+[32m2011-04-05T09:44:07-07:00 heroku[nginx]:[0m GET /javascripts/controls.js?1302020753 HTTP/1.1 | 174.116.170.55 | 9788 | http | 200
+[33m2011-04-05T16:44:07+00:00 heroku[router]:[0m GET s2k.heroku.com/javascripts/application.js dyno=web.1 queue=0 wait=0ms service=3ms bytes=411
+[32m2011-04-05T09:44:07-07:00 heroku[nginx]:[0m GET /javascripts/rails.js?1302020753 HTTP/1.1 | 174.116.170.55 | 2295 | http | 200
+[32m2011-04-05T09:44:07-07:00 heroku[nginx]:[0m GET /javascripts/application.js?1302020753 HTTP/1.1 | 174.116.170.55 | 442 | http | 200
