@@ -13,14 +13,11 @@ class Video < ActiveRecord::Base
 		if bboy != nil || bboy.id? || crew != nil || crew.id? || video != nil || video.id?
 			participant = VideoParticipant.create(:bboy_id => bboy.id, :crew_id => crew.id, :video_id => self.id)
 			return participant
-		elseif bboy != nil || crew != nil || video != nil 
+		elsif bboy != nil || crew != nil || video != nil 
 			raise ArgumentError, "Video, Bboy and Crew can not be nil " 
-		elseif bboy.id? || crew.id? || video.id?
+		elsif bboy.id? || crew.id? || video.id?
 			raise ArgumentError, "Video, Bboy and Crew must have ids" 
 		end
 	end
 	
-	def hifromvideo
-		return "Hello!"
-	end
 end

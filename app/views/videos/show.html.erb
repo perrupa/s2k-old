@@ -20,7 +20,7 @@
 
 <h3>Crews</h3>
 <ul class="crewList">
-	<% @video.crews.group(:crew_id).each do |crew| %>
+	<% @video.crews.uniq.each do |crew| %>
 	<li><%= link_to crew.name, crew_path %>
 		<ul class="bboyList">
 		<% @video.video_participants.find_all{ |vp| vp.crew == crew && vp.bboy != nil}.each do |vp| %>
