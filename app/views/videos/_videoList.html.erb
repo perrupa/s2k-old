@@ -1,0 +1,13 @@
+<ul class="videoList">
+<% videos.each do |video| %>
+  <li>
+  	<td><%= link_to youtube_thumbnail(video), video %></td>
+    <td><%= link_to video.title, video %></td>
+    <td><%= video.description %></td>
+        <% if user_signed_in? %>
+<td><%= link_to 'Edit', edit_video_path(video) %></td>
+    <td><%= link_to 'Destroy', video, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </li>
+<% end %>
+</ul>

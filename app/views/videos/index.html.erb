@@ -1,16 +1,6 @@
 <h1>Listing videos</h1>
 
-<ul class="videoList">
-<% @videos.each do |video| %>
-  <li>
-  	<td><img src="http://img.youtube.com/vi/<%= video.youtubeID %>/1.jpg"></td>
-    <td><%= link_to video.title, video %></td>
-    <td><%= video.description %></td>
-    <td><%= link_to 'Edit', edit_video_path(video) %></td>
-    <td><%= link_to 'Destroy', video, :confirm => 'Are you sure?', :method => :delete %></td>
-  </li>
-<% end %>
-</ul>
+<%= render :partial => 'videoList', :locals => { :videos => @videos} %>
 
 <br />
 

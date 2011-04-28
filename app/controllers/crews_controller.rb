@@ -2,10 +2,11 @@ class CrewsController < ApplicationController
   # GET /crews
   # GET /crews.xml
   def index
-    @crews = Crew.all
+    @crews = Crew.all.find_all {|c| c.name =~ /#{Regexp.escape(params[:term] ||= "")}/i}
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render :json => @crews }
       format.xml  { render :xml => @crews }
     end
   end

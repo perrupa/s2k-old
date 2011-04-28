@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to "Videos", videos_path %>
 <h1><%= @video.title %></h1>
 
 <iframe 
@@ -11,6 +11,8 @@
 	frameborder="0" 
 	allowfullscreen>
 </iframe>
+
+<%= @video.to_html(390, 640) %>
 	
 <div id="videoDescription">
   <b>Description:</b>
@@ -19,16 +21,12 @@
 </div>
 
 <h3>Crews</h3>
-<ul class="crewList">
-	<% @video.crews.uniq.each do |crew| %>
-	<li><%= link_to crew.name, crew_path %>
-		<ul class="bboyList">
-		<% @video.video_participants.find_all{ |vp| vp.crew == crew && vp.bboy != nil}.each do |vp| %>
-			<li><%= link_to vp.bboy.bboyName, bboy_path(vp.bboy)%></li>
-		<% end %>
-		</ul>
-	</li>
-	<% end %>
-</ul>
-<%= link_to 'Edit', edit_video_path(@video) %>
-<%= link_to 'Back', videos_path %>
+<%= render :partial => 'crewList' %>
+
+<% if user_signed_in? %>
+	<%= render 'participantForm', :locals => {:video => @video} %>
+<% end %>
+
+<%= link_to "Edit", edit_video_path(@video) if user_signed_in? %>
+
+

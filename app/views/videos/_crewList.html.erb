@@ -1,0 +1,15 @@
+<ul class="crewList">
+	<% crewHash = @video.video_participants.group_by(&:crew_id) %>
+	<% crewHash.keys.each do |crew_id| %>
+	<li><%= link_to crewHash[crew_id].first.crew.name, crewHash[crew_id].first.crew %>
+		<ul class="bboyList">
+		<% crewHash[crew_id].each do |vp| %>
+			<li>
+				<%= link_to vp.bboy.bboyName, bboy_path(vp.bboy)%>
+				(<%= link_to "remove", video_participant_path(vp), :confirm => "Are you sure they aren't in this video?", :method => :delete %>)
+			</li>
+		<% end %>
+		</ul>
+	</li>
+	<% end %>
+</ul>

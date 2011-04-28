@@ -2,15 +2,6 @@
 
 <h1><%= @bboy.bboyName %></h1>
 
-	<span class="affiliation">
-		<% if(@bboy.crews.count > 0)%>
-			<span><%= if(@bboy.crews.size > 1) then "Crew".pluralize else "Crew" end %>:</span>
-			<%= @bboy.crews.collect{|c| link_to c.name, c}.to_sentence.html_safe %>
-		<% else %>	
-			<em>Independent</em>
-		<% end %>
-	</span>
-
 <% if @bboy.name != nil %>
 <p>
   <b>Full Name:</b>
@@ -18,11 +9,25 @@
 </p>
 <% end %>
 
+<span class="affiliation">
+	<% if(@bboy.crews.count > 0)%>
+		(<%= @bboy.crews.uniq.collect{|c| link_to c.name, c}.join(" / ").html_safe %>)
+	<% else %>	
+		<em>Independent</em>
+	<% end %>
+</span>
+
+<% if @bboy.battled_with.size > 0 %>
+	<h3>Has Battled with</h3>
+		<%= @bboy.battled_with.uniq.collect{|c| link_to c.name, c}.to_sentence.html_safe %>
+<% end %>
+
+
 <h3>Videos</h3>
 <% if @bboy.videos.count > 0%>
 <ul>
-	<% @bboy.videos.each do |video| %>
-	<li><%= link_to video.title, video%></li>
+	<% @bboy.videos.uniq.each do |video| %>	
+	<li><%= link_to youtube_thumbnail(video), video%> <%= link_to video.title, video%></li>
 	<% end %>
 </ul>
 <% else %>

@@ -1,0 +1,56 @@
+<% if user_signed_in? %>
+	<h4>Add bboys</h4>
+	<%= form_for(VideoParticipant.new) do |f| %>
+
+		<%= label :video_participant, :bboyName %>
+		<%= f.text_field :bboy_name %>
+
+		
+		<%= label :video_participant, :crew %>
+		<%= f.text_field :crew_name %>
+		
+		<%= hidden_field :video_participant, "video_id", { :value => @video.id}%>
+		
+		<%= submit_tag "Add" %>
+	<% end %>
+<% end %>
+
+<script type="text/javascript">  
+
+	$(document).ready(function(){ 
+
+		$("#video_participant_bboy_name").autocomplete({  
+			source: function( request, response ) {
+				$.ajax({
+					url: "<%= bboys_path(:json)%>?term=" + request.term,
+					dataType: "json",
+					success: function( data ) {
+						crewMap = $.map( data, function( item ) {
+								return {
+									label: item.bboy.bboyName,
+									value: item.bboy.bboyName
+								}
+							});
+						response(crewMap);
+					}
+				});
+			}});
+		
+		$("#video_participant_crew_name").autocomplete({  
+			source: function( request, response ) {
+				$.ajax({
+					url: "<%= crews_path(:json)%>?term=" + request.term,
+					dataType: "json",
+					success: function( data ) {
+						crewMap = $.map( data, function( item ) {
+								return {
+									label: item.crew.name,
+									value: item.crew.name
+								}
+							});
+						response(crewMap);
+					}
+				});
+			}});
+	});
+</script>  

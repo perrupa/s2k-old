@@ -2,11 +2,14 @@ class BboysController < ApplicationController
   # GET /bboys
   # GET /bboys.xml
   def index
-    @bboys = Bboy.all
+    @bboys = Bboy.all.find_all {|b| b.bboyName =~ /#{Regexp.escape(params[:term] ||= "")}/i}
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @bboys }
+		format.html # index.html.erb
+		format.json { 
+			render :json =>@bboys
+		}
+		format.xml  { render :xml => @bboys }
     end
   end
 
