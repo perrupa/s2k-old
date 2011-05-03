@@ -21,8 +21,7 @@ class Video < ActiveRecord::Base
 	end
 	
 	def to_html(height=390, width=640)
-		return 
-		"<iframe 
+		return "<iframe 
 			class='youtubeFrame'
 			title='YouTube video player' 
 			width='#{width}' 

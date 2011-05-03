@@ -6,7 +6,9 @@
 		<% crewHash[crew_id].each do |vp| %>
 			<li>
 				<%= link_to vp.bboy.bboyName, bboy_path(vp.bboy)%>
+				<% if user_signed_in? %>
 				(<%= link_to "remove", video_participant_path(vp), :confirm => "Are you sure they aren't in this video?", :method => :delete %>)
+				<% end %>
 			</li>
 		<% end %>
 		</ul>

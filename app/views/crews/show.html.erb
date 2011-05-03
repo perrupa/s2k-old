@@ -14,5 +14,5 @@
 	<li><%= link_to video.title, video %></li>
 <% end %>
 </ul>
-<%= link_to 'Edit', edit_crew_path(@crew) %> |
+<%= link_to 'Edit', edit_crew_path(@crew) if user_signed_in? %> 
 <%= link_to 'Back', crews_path %>

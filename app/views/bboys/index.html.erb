@@ -11,7 +11,7 @@
 	<tr>
 		<td><%= link_to bboy.bboyName, bboy %></td>    
 		<td><%= bboy.crews.uniq.collect{|c| link_to c.name, c}.to_sentence.html_safe  %></td>
-		<td><%= link_to 'Edit', edit_bboy_path(bboy) if user_signed_in? %></td>
+		<td><%= link_to "Edit", edit_bboy_path(bboy) if user_signed_in? %></td>
 	</tr>
 <% end %>
 </table>

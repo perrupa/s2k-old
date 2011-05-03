@@ -1,23 +1,19 @@
 <p id="notice"><%= notice %></p>
-<%= link_to "Videos", videos_path %>
+<span id="breadcrumb">
+	<%= link_to "Home", root_path %> >
+	<%= link_to "Videos", videos_path %> >
+	<%= @video.title %>
+</span>
+
 <h1><%= @video.title %></h1>
 
-<iframe 
-	class="youtubeFrame"
-	title="YouTube video player" 
-	width="640" 
-	height="390" 
-	src="http://www.youtube.com/embed/<%= @video.youtubeID %>" 
-	frameborder="0" 
-	allowfullscreen>
-</iframe>
-
-<%= @video.to_html(390, 640) %>
+<% @video.to_html(390, 640) %>
 	
 <div id="videoDescription">
   <b>Description:</b>
   <p><%= @video.description %></p>
   <p>YoutubeID = <%= @video.youtubeID %></p>
+  <%= render 'layouts/like', :locals => {:url => video_path(@video)} %>
 </div>
 
 <h3>Crews</h3>
