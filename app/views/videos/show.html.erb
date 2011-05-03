@@ -1,3 +1,16 @@
+<% content_for :head do %>
+    <meta property="og:title" content="<%=h @video.title %>"/>
+    <meta property="og:type" content="movie"/>
+    <meta property="og:url" content="<%= request.url %>"/>
+    <meta property="og:image" content="<%= "http://img.youtube.com/vi/#{@video.youtubeID}/1.jpg" %>"/>
+    <meta property="og:description" content="<%=h @video.description %>"/>
+
+	<meta property="og:video" content="http://example.com/awesome.swf" />
+	<meta property="og:video:height" content="640" />
+	<meta property="og:video:width" content="385" />
+	<meta property="og:video:type" content="application/x-shockwave-flash" />
+<% end %>
+
 <p id="notice"><%= notice %></p>
 <span id="breadcrumb">
 	<%= link_to "Home", root_path %> >
@@ -24,5 +37,3 @@
 <% end %>
 
 <%= link_to "Edit", edit_video_path(@video) if user_signed_in? %>
-
-
