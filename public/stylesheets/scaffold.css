@@ -54,3 +54,20 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+@font-face {
+    font-family: 'BebasRegular';
+    src: url('BEBAS___-webfont.eot');
+    src: url('BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('BEBAS___-webfont.woff') format('woff'),
+         url('BEBAS___-webfont.ttf') format('truetype'),
+         url('BEBAS___-webfont.svg#BebasRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1 {
+	font: 60px/68px 'BebasRegular',Arial,sans-serif;
+	letter-spacing: -3px;
+}

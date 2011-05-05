@@ -1,17 +1,18 @@
 <% content_for :head do %>
-	<meta property="og:site_name" content="Skills to Kill"/>
-	<meta property="og:admins" content="christopher.marlow"/>
-
 	<meta property="og:title" content="<%=h @video.title %>"/>
-	<meta property="og:type" content="movie"/>
 	<meta property="og:url" content="<%= request.url %>"/>
 	<meta property="og:description" content="<%=h @video.description %>"/>
 
-	<meta property="og:image" content="http://img.youtube.com/vi/<%=@video.youtubeID%>/1.jpg"/>
+	<meta property="og:type" content="video"/>
 	<meta property="og:video" content="http://www.youtube.com/v/<%=@video.youtubeID%>?version=3&amp;autohide=1" />
 	<meta property="og:video:height" content="640" />
 	<meta property="og:video:width" content="385" />
 	<meta property="og:video:type" content="application/x-shockwave-flash" />
+	<meta property="og:image" content="http://img.youtube.com/vi/<%=@video.youtubeID%>/1.jpg"/>
+
+	
+	<meta property="og:site_name" content="Skills to Kill"/>
+	<meta property="og:admins" content="christopher.marlow"/>
 <% end %>
 
 <p id="notice"><%= notice %></p>
@@ -28,15 +29,14 @@
 <div id="videoDescription">
 	<b>Description:</b>
 	<p><%= @video.description %></p>
-
+	<div id="likeButton">
 	<%= facebook_like %>
+	</div>
 </div>
 
 <h3>Crews</h3>
 <%= render "crewList" %>
 
-<% if user_signed_in? %>
-	<%= render "participantForm", :locals => { :video => @video } %>
-<% end %>
+<%= render "participantForm", :locals => { :video => @video } %>
 
 <%= link_to "Edit", edit_video_path(@video) if user_signed_in? %>
