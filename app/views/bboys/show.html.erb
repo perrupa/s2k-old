@@ -1,11 +1,12 @@
+<%= link_to "BBoys", bboys_path %> > <%= @bboy.bboyName %>
+
 <p id="notice"><%= notice %></p>
 
-<h1><%= @bboy.bboyName %></h1>
+<h1><%= @bboy.bboyName %></h1> <%= link_to "Edit", edit_bboy_path(@bboy) if user_signed_in? %> <br />
 
-<% if @bboy.name != nil %>
+<% if !(@bboy.name.blank?) %>
 <p>
-  <b>Full Name:</b>
-  <%= @bboy.name %>
+  <b>Full Name:</b> <%= @bboy.name %>
 </p>
 <% end %>
 
@@ -19,7 +20,7 @@
 
 <% if @bboy.battled_with.size > 0 %>
 	<h3>Has Battled with</h3>
-		<%= @bboy.battled_with.uniq.collect{|c| link_to c.name, c}.to_sentence.html_safe %>
+		<%= @bboy.battled_with.collect{|c| link_to c.name, c}.to_sentence.html_safe %>
 <% end %>
 
 
@@ -34,5 +35,3 @@
 <em>None</em>
 <% end %>
 
-<%= link_to 'Edit', edit_bboy_path(@bboy) %> |
-<%= link_to 'Back', bboys_path %>

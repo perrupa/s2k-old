@@ -9,6 +9,6 @@ class Bboy < ActiveRecord::Base
 		
 	def battled_with
 		#vpList = VideoParticipant.find_by_bboy_id(self.id)
-		self.video_participants.collect(&:crew)
+		self.video_participants.collect(&:crew).uniq
 	end
 end
