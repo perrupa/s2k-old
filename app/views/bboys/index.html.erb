@@ -1,21 +1,31 @@
-<h1>Listing bboys</h1>
+<div class="page-header">
+	<h1>BBoys<small>and their associated crews</small></h1>
+</div>
+<div class="row">
+	<div class="span14 offset1">
+		<table id="bboyTable" class="bordered-table zebra-striped">
+		<tr>
+		<th>Bboy Name</th>
+		<th>Crew(s)</th>
+		<th></th>
+		</tr>
 
-<table>
-  <tr>
-    <th>Bboy Name</th>
-    <th>Crew(s)</th>
-    <th></th>
-  </tr>
+		<% @bboys.each do |bboy| %>
+				<tr>
+				<td><%= link_to bboy.bboyName, bboy %></td>
+				<td><%= bboy.crews.uniq.collect{|c| link_to c.name, c}.to_sentence.html_safe  %></td>
+				<td><%= link_to "Edit", edit_bboy_path(bboy) if user_signed_in? %></td>
+				</tr>
+		<% end %>
+		</table>
+		<br>
+		<%= link_to 'New Bboy', new_bboy_path , :class => "btn primary" if user_signed_in?%>
+	</div>
+</div>
 
-<% @bboys.each do |bboy| %>
-	<tr>
-		<td><%= link_to bboy.bboyName, bboy %></td>    
-		<td><%= bboy.crews.uniq.collect{|c| link_to c.name, c}.to_sentence.html_safe  %></td>
-		<td><%= link_to "Edit", edit_bboy_path(bboy) if user_signed_in? %></td>
-	</tr>
-<% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Bboy', new_bboy_path if user_signed_in? %>
+<script type="text/javascript">
+$(function(){
+	$("#bboyTable").tablesorter();
+});
+</script>

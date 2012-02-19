@@ -1,18 +1,44 @@
-<p id="notice"><%= notice %></p>
-<h1><%= @crew.name %></h1>
-
-<h2>Members of <%= @crew.name %></h2>
-<ul>
-<% @crew.bboys.uniq.each do |bboy| %>
-	<li><%= link_to bboy.bboyName, bboy %></li>
-<% end %>
+<ul class="breadcrumb">
+	<li><%= link_to "Crews", crews_path %><span class="divider">/</span></li>
+	<li><%= @crew.name %></li>
 </ul>
 
-<h2>Videos of <%= @crew.name %></h2>
-<ul>
-<% @crew.videos.uniq.each do |video| %>
-	<li><%= link_to video.title, video %></li>
+<div class="page-header">
+	<h1><%= @crew.name %></h1>
+</div>
+
+<%if(! notice.nil?)%>
+<div class="row">
+	<div class="span14 offset1">
+		<div class="alert-message warning">
+  			<a class="close" href="#">×</a>
+			<p><%= notice %></p>
+		</div>
+	</div>
+</div>
 <% end %>
-</ul>
-<%= link_to 'Edit', edit_crew_path(@crew) if user_signed_in? %> 
-<%= link_to 'Back', crews_path %>
+<div class="row">
+	<div class="span14 offset1">
+
+
+
+		<h2>Members of <%= @crew.name %></h2>
+
+		<ul>
+		<% @crew.bboys.uniq.each do |bboy| %>
+			<li><%= link_to bboy.bboyName, bboy %></li>
+		<% end %>
+		</ul>
+
+		<h2>Videos of <%= @crew.name %></h2>
+		<ul>
+		<% @crew.videos.uniq.each do |video| %>
+			<li><%= link_to video.title, video %></li>
+		<% end %>
+		</ul>
+
+		<%= link_to 'Edit', edit_crew_path(@crew) if user_signed_in? %>
+		<%= link_to 'Back', crews_path %>
+
+	</div>
+</div>

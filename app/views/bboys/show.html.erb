@@ -1,37 +1,57 @@
-<%= link_to "BBoys", bboys_path %> > <%= @bboy.bboyName %>
-
-<p id="notice"><%= notice %></p>
-
-<h1><%= @bboy.bboyName %></h1> <%= link_to "Edit", edit_bboy_path(@bboy) if user_signed_in? %> <br />
-
-<% if !(@bboy.name.blank?) %>
-<p>
-  <b>Full Name:</b> <%= @bboy.name %>
-</p>
-<% end %>
-
-<span class="affiliation">
-	<% if(@bboy.crews.count > 0)%>
-		(<%= @bboy.crews.uniq.collect{|c| link_to c.name, c}.join(" / ").html_safe %>)
-	<% else %>	
-		<em>Independent</em>
-	<% end %>
-</span>
-
-<% if @bboy.battled_with.size > 0 %>
-	<h3>Has Battled with</h3>
-		<%= @bboy.battled_with.collect{|c| link_to c.name, c}.to_sentence.html_safe %>
-<% end %>
-
-
-<h3>Videos</h3>
-<% if @bboy.videos.count > 0%>
-<ul>
-	<% @bboy.videos.uniq.each do |video| %>	
-	<li><%= link_to youtube_thumbnail(video), video%> <%= link_to video.title, video%></li>
-	<% end %>
+<ul class="breadcrumb">
+	<li><%= link_to "BBoys", bboys_path %><span class="divider">/</span></li>
+	<li><%= @bboy.bboyName %></li>
 </ul>
-<% else %>
-<em>None</em>
+
+<div class="page-header">
+	<h1>
+		<%= @bboy.bboyName %>
+		<small>
+			<% if(@bboy.crews.count > 0)%>
+				(<%= @bboy.crews.uniq.collect{|c| link_to c.name, c}.join(" / ").html_safe %>)
+			<% else %>
+				<em>Independent</em>
+			<% end %>
+		</small>
+	</h1>
+</div>
+
+<%if(! notice.nil?)%>
+<div class="row">
+	<div class="span14 offset1">
+		<div class="alert-message warning">
+  			<a class="close" href="#">×</a>
+			<p><%= notice %></p>
+		</div>
+	</div>
+</div>
 <% end %>
 
+<div class="row">
+	<div class="span14 offset1">
+		<% if !(@bboy.name.blank?) %>
+		<p>
+		  <b>Full Name:</b> <%= @bboy.name %>
+		</p>
+		<% end %>
+
+
+		<% if @bboy.battled_with.size > 0 %>
+			<h3>Has Battled with</h3>
+				<%= @bboy.battled_with.collect{|c| link_to c.name, c}.to_sentence.html_safe %>
+		<% end %>
+
+
+		<h3>Videos</h3>
+		<% if @bboy.videos.count == 0%>
+			<em>None</em>
+		<% else %>
+			<ul>
+				<% @bboy.videos.uniq.each do |video| %>
+					<li><%= link_to youtube_thumbnail(video), video%> <%= link_to video.title, video%></li>
+				<% end %>
+			</ul>
+		<% end %>
+
+	</div>
+</div>

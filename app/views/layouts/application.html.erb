@@ -14,16 +14,19 @@
 	<meta property="fb:admins" content="601315226"/>
 </head>
 <body>
-	<div id="user_nav">
-	<% if user_signed_in? %>
-		Signed in as <%= current_user.email %>. Not you?
-		<%= link_to "Sign out", destroy_user_session_path %>
-	<% else %>
-		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
-	<% end %>
+	<div class="topbar">
+		<%= render :partial => 'layouts/topbar' %>
 	</div>
 
-	<%= yield %>
+	<div class="container">
+		<div class="content">
+			<%= yield %>
+		</div>
+	</div>
+
+	<footer>
+		<p>&copy;<%= Time.now.year %> Chris Marlow</p>
+	</footer>
 
 </body>
 </html>

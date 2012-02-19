@@ -10,29 +10,35 @@
 	<meta property="og:image" content="http://img.youtube.com/vi/<%=@video.youtubeID%>/1.jpg"/>
 <% end %>
 
-<p id="notice"><%= notice %></p>
-
-<span id="breadcrumb">
-	<%= link_to "Home", root_path %> >
-	<%= link_to "Videos", videos_path %> >
-	<%= @video.title %>
-</span>
-
-<h1><%= @video.title %></h1>
-
-<%= @video.to_html(390, 640) %>
-	
-<div id="videoDescription">
-	<b>Description:</b>
-	<p><%= @video.description %></p>
-	<div id="likeButton">
-	<%= facebook_like %>
-	</div>
+<div class="page-header">
+	<h1><%= @video.title %></h1>
 </div>
 
-<h3>Crews</h3>
-<%= render "crewList" %>
+<div class="row">
+<div class="span14">
+	<ul class="breadcrumb">
+		<li><%= link_to "Home", root_path %> ></li>
+		<li><%= link_to "Videos", videos_path %> ></li>
+		<li><%= @video.title %></li>
+	</ul>
 
-<%= render "participantForm", :locals => { :video => @video } %>
+	<p id="notice"><%= notice %></p>
 
-<%= link_to "Edit", edit_video_path(@video) if user_signed_in? %>
+	<%= @video.to_html(488, 800) %>
+		
+	<div id="videoDescription">
+		<b>Description:</b>
+		<p><%= @video.description %></p>
+		<div id="likeButton">
+		<%= facebook_like %>
+		</div>
+	</div>
+
+	<h3>Crews</h3>
+	<%= render "crewList" %>
+
+	<%= render "participantForm", :locals => { :video => @video } %>
+
+	<%= link_to "Edit", edit_video_path(@video) if user_signed_in? %>
+</div>
+</div>

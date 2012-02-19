@@ -1,0 +1,87 @@
+@font-face {
+  font-family: "BebasNeueRegular";
+  src: url("fonts/BebasNeue-webfont.eot");
+  src: url("fonts/BebasNeue-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/BebasNeue-webfont.woff") format("woff"), url("fonts/BebasNeue-webfont.ttf") format("truetype"), url("fonts/BebasNeue-webfont.svg#BebasNeueRegular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+body {
+  margin: auto;
+  width: 960px;
+  background-color: white;
+  color: #333333; }
+
+body, p, ol, ul, td {
+  font-family: helvetica, verdana, arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+
+pre {
+  background-color: #eeeeee;
+  padding: 10px;
+  font-size: 11px; }
+
+h1, h2, h3, h4, h5 {
+  clear: both; }
+
+a {
+  color: black; }
+
+a:visited {
+  color: #666666; }
+
+a:hover {
+  color: white;
+  background-color: black; }
+
+a img:hover {
+  color: inherit;
+  background-color: inherit; }
+
+div.field, div.actions {
+  margin-bottom: 10px; }
+
+#notice {
+  color: green; }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table; }
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0; }
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #cc0000;
+  color: white; }
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square; }
+
+h1 {
+  font: 60px/68px "BebasNeueRegular", Arial, sans-serif;
+  margin: 0;
+  padding: 0; }
+
+.crewList {
+  list-style: none; }
+
+.crewList > li {
+  float: left;
+  margin-right: 15px; }
+
+.youtubeFrame {
+  margin: auto; }
