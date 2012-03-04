@@ -15,30 +15,43 @@
 </div>
 
 <div class="row">
-<div class="span14">
-	<ul class="breadcrumb">
-		<li><%= link_to "Home", root_path %> ></li>
-		<li><%= link_to "Videos", videos_path %> ></li>
-		<li><%= @video.title %></li>
-	</ul>
+	<div class="offset2 span8">
+		<p id="notice"><%= notice %></p>
+	</div>
+</div>
 
-	<p id="notice"><%= notice %></p>
+<div id="videoContainer" class="row">
+	<div class="offset1 span14">
+		<%= @video.to_html(488, 800) %>
+	</div>
+</div>
 
-	<%= @video.to_html(488, 800) %>
-		
-	<div id="videoDescription">
-		<b>Description:</b>
-		<p><%= @video.description %></p>
-		<div id="likeButton">
-		<%= facebook_like %>
+<div id="videoDescription" class="row">
+	<div class="offset1 span8">
+		<h2>Description:</h2>
+		<div >
+			<p><%= @video.description %></p>
 		</div>
 	</div>
+	<div class="offset1 span6">
+		<div id="likeButton">
+			<%= facebook_like %>
+		</div>
+	</div>
+</div>
 
-	<h3>Crews</h3>
-	<%= render "crewList" %>
+<div class="row">
+	<div class="offset1 span14">
+		<h3>Crews</h3>
+	</div>
+</div>
 
-	<%= render "participantForm", :locals => { :video => @video } %>
+<%= render "crewList" %>
 
+<div class="row">
+	<div class="span16">
+		<%= render "participantForm", :locals => { :video => @video } %>
+	</div>
 	<%= link_to "Edit", edit_video_path(@video) if user_signed_in? %>
 </div>
-</div>
+

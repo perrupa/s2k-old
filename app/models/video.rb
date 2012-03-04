@@ -31,5 +31,9 @@ class Video < ActiveRecord::Base
 			allowfullscreen>
 		</iframe>".html_safe
 	end
+
+	def crew_hash
+		self.video_participants.group_by(&:crew_id)
+	end
 	
 end

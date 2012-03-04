@@ -1,24 +1,38 @@
-<h1>Listing crews</h1>
+<div class="page-header">
+	<h1>Listing crews</h1>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row">
+	<div class="offset2 span12">
+		<table class="bordered-table zebra-striped">
+			<tr>
+				<th>Name</th>
+				<% if user_signed_in? %>
+					<th>-</th>
+					<th>-</th>
+				<% end %>
+			</tr>
 
-<% @crews.each do |crew| %>
-  <tr>
-    <td><%= link_to crew.name, crew %></td>
-    <% if user_signed_in? %>
-    <td><%= link_to 'Edit', edit_crew_path(crew) %></td>
-    <td><%= link_to 'Destroy', crew, :confirm => 'Are you sure?', :method => :delete %></td>
-	<% end %>
-  </tr>
-<% end %>
-</table>
+		<% @crews.each do |crew| %>
+			<tr>
+				<td><%= link_to crew.name, crew %></td>
+				<% if user_signed_in? %>
+					<td><%= link_to 'Edit', edit_crew_path(crew) %></td>
+					<td><%= link_to 'Destroy', crew, :confirm => 'Are you sure?', :method => :delete %></td>
+				<% end %>
+			</tr>
+		<% end %>
+		<tfoot>
+			<tr>
+				<td><%= link_to '+ Add', new_crew_path %></td>
+			</tr>
+		</tfoot>
+		</table>
+	</div>
+</div>
 
-<br />
-
-<%= link_to 'New Crew', new_crew_path %>
+<div class="row">
+	<div class="offset1 span14">
+		<%= link_to 'New Crew', new_crew_path %>
+	</div>
+</div>

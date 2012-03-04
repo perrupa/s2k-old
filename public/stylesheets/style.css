@@ -18,10 +18,11 @@ body {
 h1 {
   font: 60px/68px "BebasNeueRegular", Arial, sans-serif; }
 
-.page-header h1 {
-  margin-left: 20px; }
-  .page-header h1 small {
-    margin-left: 5px; }
+.page-header h1 small {
+  margin-left: 5px; }
 
 .youtubeFrame {
   margin: auto; }
+
+#videoContainer, #videoDescription {
+  margin-bottom: 20px; }

@@ -1,18 +1,23 @@
-<ul class="crewList">
-	<% crewHash = @video.video_participants.group_by(&:crew_id) %>
+<% crewHash = @video.crew_hash %>
+<div class="row">
+
 	<% crewHash.keys.each do |crew_id| %>
-	<li id="crew<%=crew_id%>" class="crew">
-		<%= link_to crewHash[crew_id].first.crew.name, crewHash[crew_id].first.crew %>
-		<ul class="bboyList">
+	<div class="offset1 span3">
+		<dl id="crew<%=crew_id%>" class="bboyList">
+		<dt>
+			<h4><%= link_to crewHash[crew_id].first.crew.name, crewHash[crew_id].first.crew %></h5>
+		</dt>
 		<% crewHash[crew_id].each do |vp| %>
-			<li id="bboy<%=vp.id%>" class="bboy">
+			<dd id="bboy<%=vp.id%>" class="bboy">
 				<%= link_to vp.bboy.bboyName, bboy_path(vp.bboy)%>
 				<% if user_signed_in? %>
 				(<%= link_to "remove", video_participant_path(vp), :confirm => "Are you sure they aren't in this video?", :method => :delete, :class => "removeBboy" %>)
 				<% end %>
-			</li>
+			</dd>
 		<% end %>
-		</ul>
-	</li>
+		</dl>
+	</div>
 	<% end %>
-</ul>
+
+
+</div>

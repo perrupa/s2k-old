@@ -8,12 +8,12 @@
 			<li><%= link_to "BBoys", bboys_path()%></li>
 		</ul>
 
-		<span class="pull-right">
+		<div class="pull-right">
 		<% if user_signed_in? %>
 			<span>Signed in as <%= current_user.email %>. Not you? <%= link_to "Sign out", destroy_user_session_path %></span>
 		<% else %>
 			<span><%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %></span>
 		<% end %>
-		</span>
+		</div>
 	</div>
 </div>
